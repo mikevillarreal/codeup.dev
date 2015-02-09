@@ -1,0 +1,32 @@
+
+.hire-ribbon {
+	float: right;
+}
+body {
+	background-image: url("../images/bg.jpg");
+	color: gray;
+	margin-top: 50px
+}
+.box h1 {
+	font-size: 60px;
+	color: white;
+}
+h2 {
+	color: #e3e3e3;
+	font-size: 50px;
+}
+h3 {
+	color: #ff6310;
+}
+.btn-primary {
+	color: white;
+}
+
+.box {
+	height: 300px;
+	width: 100%;
+	background-color: #ff6310;
+}
+.box-header {
+	margin-left: 100px;
+}

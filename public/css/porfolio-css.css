@@ -1,0 +1,19 @@
+
+.hire-ribbon {
+	position: fixed;
+    top: 50px;
+    right: 0px;
+}
+body {
+	background-image: url("../images/bg.jpg");
+	color: gray;
+	margin-top: 50px
+}
+h1 {
+	color: #ff6310;
+}
+h3 a {
+	color: #ff6310;
+}
+
+
