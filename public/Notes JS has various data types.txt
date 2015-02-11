@@ -1,0 +1,162 @@
+JS has various data types
+- booleans (true/false)
+- strings ("123:jf")
+- numbers
+- underfined
+- null ex. var variableName
+- array
+- functions
+- object
+
+#  opertors:
+
+## Logical Operations
+!
+&& and
+|| or
+
+# Assignmet Operator
+= assigment operator
+var nameOfTheVariable = "give it a value"
+const nameOfTheConstant = "the constant's value"
+
+
+
+#Comparisson Operators
+=== exactly the same type and value == "identical"
+== equal -  checks values only not data types
+!= not equal
+!== strictly not equal
+>
+<
+>=
+<=
+
+
++
+-
+/
+*
+%
+!
+
+Caracter
+\ skip
+\n renglon
+\t tab
+
+
+Incerementing Operators
+++
+__
++-
+-=
+
+Control Structures - Control the flow of the program
+if (true) {
+    //do this
+}
+if (true) {
+    //do this
+} else {
+    //execute this other code
+} 
+
+if (somethingIsTrue) {
+    //do this
+} else 
+
+
+switch (name) {
+    case: 'Benny'
+    console.log( 'Howdy Benny!');
+    'default':
+    console.log('Welcome, ' + name + '. Please get started.');
+    break;
+}
+
+console.log('hi')
+
+alert('hi')
+
+prompt('hi')
+
+
+
+
+var i=o;
+while (i<10){
+    console.log('While loop iteration #' + i)
+}
+
+var i = 0
+do {
+    i++;
+    console.log(i)
+} while (i<5);
+
+var i = 0
+while (i<100) {
+    console.log('while loop iteration #' + i);
+}
+
+Exercise
+1) 1-100
+2) 2-100 (evens only)
+3) 1-100 (if i evenly divisible by 3, output "Fizz")
+4) 1-100 multiples of 5 should output "Buzz"
+5) 1-100 multiples of 3 and 5 should output "FizzBuzz" 
+
+
+var i = 1
+while (i <= 100) {
+console.log('while loop iternation #' + i);
+i++;
+}
+
+
+var i = 2
+while (i <= 100) {
+console.log('while loop iternation #' + i);
+i = i + 2 ;
+}
+
+
+var i = 3
+while (i < 100) {
+    console.log('Fizz' + i);
+    i = i + 3;
+}
+
+var i = 1;
+while (i <= 100) {
+    if (i % 3 == 0) {
+    console.log('Fizz');
+    } else {
+    console.log (i);
+    }
+    i++
+}
+
+var i = 1;
+while (i <= 100) {
+    if (i % 5 == 0) {
+    console.log('Buzz');
+    } else {
+    console.log (i);
+    }
+    i++
+}
+
+var i = 1;
+while (i <= 100) {
+    if (i % 3 == 0) {
+    console.log('Fuzz');
+    } else if (i % 5 == 0) {
+    console.log('Buzz');
+    } else {
+    console.log (i);
+    }
+    i++
+}
+
