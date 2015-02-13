@@ -12,20 +12,21 @@
 			var favorite = 'orange';
 
 			if (color == 'red') {
-				alert('Red is the color of a clown\'s nose');
+				console.log('Red is the color of a clown\'s nose');
 			} else if (color == 'orange') {
-				alert('Orange is the color of tangeries');
+				console.log('Orange is the color of tangeries');
 			} else if (color == 'yellow') {
-				alert('Yellow is the color of the tuna\'s fin');
+				console.log('Yellow is the color of the tuna\'s fin');
 			} else if (color = 'green') {
-				alert('Green grows the garden');
+				console.log('Green grows the garden');
 			} else if (color = 'blue') {
-				alert('I wish the Riverwalk had blue water');
+				console.log('I wish the Riverwalk had blue water');
 			} else if (color == 'indigo' || color == 'violet') {
-				alert('I don\'t know anything about that color');
+				console.log('I don\'t know anything about that color');
 			}
-			alert = (favorite) ? 'My favorite Color is Orange. : 'Oops, something went wrong.';
 
+			var message = (color == favorite) ? 'My favorite color is Orange' : 'not my fav color';
+			console.log(message)
 
 			// todo, change this to your favorite color from the list
 			// todo: Create a block of if/else statements to check for every color except indigo and violet.

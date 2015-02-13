@@ -5,13 +5,13 @@
 	</head>
 	<body>
 		<script>
+			
+			(function(){
 			var myNameIs = 'Mike';
+				console.log('hello from ' + myNameIs);
+			}());
 
-			function sayHello(name){
-				console.log('hello from ' + name);
-			}
-
-			sayHello(myNameIs)
+			// sayHello(myNameIs)
 
 
 			// var myNameIs = 'Mike'; // todo: Fill in your name here.
@@ -27,26 +27,28 @@
 
 			// do not worry about the details of this line
 			// just know that it generates a random number between 1 and 100
-			var random = Math.floor((Math.random()*100)+1);
+			
 
-			function isOdd(number){
-				if (number % 2 !== 0){
-				console.log(number);	
+			(function (){
+				var random = Math.floor((Math.random()*100)+1);
+				if (random % 2 !== 0){
+				console.log(random);	
 				} else {
 					console.log('it\'s even');
 				}
 		
-			}
-			isOdd(random);
+			}());
+			// isOdd(random);
 
 			//this below is the same exercise from above but using the ternary operator
 
-			var random = Math.floor((Math.random()*100)+1);
+			
 
-			function isOdd(number){
-				(number % 2 !== 0) ? console.log(number) : console.log('it\'s even');
-			}
-			isOdd(random);
+			(function (){
+				var random = Math.floor((Math.random()*100)+1);
+					(random % 2 !== 0) ? console.log(random) : console.log('it\'s even');
+			}());
+			// isOdd(random);
 
 
 			// todo:
