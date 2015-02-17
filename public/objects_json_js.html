@@ -55,33 +55,19 @@
 		
 
 			// log out the books array
-			console.log(books.bookAuthor);
+			console.log(books);
 
-
-				for(var i = 0; i < books.length; i++)
-			    {
-			       console.log(books[i]);
-			    };
 
 			// todo:
 			// Loop through the array of books using .forEach and print out the specified information about each one.
 			// start loop here
 
-			{
-			        // console.log(books[i]);
-			        console.log("Book: " + books[i].bookName);
-			        console.log("Book Author: " + books[i].bookAuthor.firstName + ' ' + books[i].bookAuthor.lastName);
-			        console.log('==================');
-
-			    }
-
-			    books.forEach(function(book, index){
-			        console.log(book.bookName);
-			    });
-
-			    
-			// end loop here
-
+			books.forEach(function(element, index, array){
+				console.log("Book name " + element.bookName);
+				console.log("The Author is " + element.bookAuthor.firstName + " " + element.bookAuthor.lastName);
+			});
+			console.log('=======================')
+	
 
 		</script>
 	</body>

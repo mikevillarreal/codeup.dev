@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Objects Math</title>
+</head>
+<body>
+	<script>
+		// create a circle object
+		var circle = {
+		    radius: 3,
+		    getArea: function () {
+		    	return Math.pow(circle.radius,2) * Math.PI;
+		        // todo: finish this method
+		        // hint: area = pi * radius^2
+		      
+		    },
+		    logInfo: function (round) {
+		    	if (round) {
+		    	console.log('Area of a circle with radius: ' + this.radius + ', is: ' + Math.round(this.getArea()));
+		    	} else {
+		    		console.log('Area of a circle with radius: ' + this.radius + ', is: ' + this.getArea());
+		    	}
+		        // todo: complete this method. if round is true, round the result to the nearest integer.	      
+		    }
+		};
+
+		// log info about the circle
+		circle.logInfo(false);
+		circle.logInfo(true);
+
+		// todo:
+		// Change the radius of the circle to 5.
+		circle.radius = 5;
+
+		// log info about the circle
+		circle.logInfo(false);
+		circle.logInfo(true);
+
+		// Area of trapezoid
+		// area = (a + b) * h/2
+
+
+
+			// var a = (5);
+			// var b = (10);
+			// var h = (15);
+
+		// var	trapezoid = {
+			
+		// 	getTrapArea: function (a,b,h) {
+		//     	return(a + b) * h/2;
+		// 	}
+		// };
+		// console.log(trapezoid.getTrapArea(5,10,15));
+
+			
+
+		var	trapezoid = {
+			a: 5,
+			b: 10,
+			h: 15,
+			getTrapArea: function() {
+		    	return(this.a + this.b) * this.h/2;
+			}
+		};
+		console.log(trapezoid.getTrapArea());
+
+
+
+			//top length - a (property) 5
+			//bottom length - b (property) 10
+			//height (property) 15
+			//getArea (method)
+			//logInfo (method)
+
+	
+
+
+	</script>
+
+</body>
+</html>

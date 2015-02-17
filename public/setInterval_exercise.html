@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>setInterval</title>
+</head>
+<body>
+	<script>
+
+		var max = 10;
+		var count = 0;
+
+		var intervalID = setInterval(function() {
+		if(count>=max){
+		clearInterval(intervalID);
+		console.log('All Done');
+		} else {
+		count++;
+		console.log('Repeat this line for the ' + count + ' time');
+		} 
+		}, 1000);
+
+	</script>
+</body>
+</html>
+
+
+
