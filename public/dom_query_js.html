@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 	<head>
 	    <title>DOM: Query and Modify</title>
@@ -23,8 +23,15 @@
 	        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
 	        culpa qui officia deserunt mollit anim id est laborum.
 	    </p>
+	    <button id= "btn1">Main Header</button>
+	    <button id= "btn2">Sub Header</button>
+	    <button id= "btn3">Paragraph</button>
 
 	    <script>
+	    	var btn1 = document.getElementById("btn1");
+			var btn2 = document.getElementById("btn2");
+			var btn3 = document.getElementById("btn3");
+
 
 	        // todo: get the main header element by id
 	        // var mainHeader = ;
@@ -32,13 +39,26 @@
 	        // todo: set inner html of mainHeader to "JavaScript is Cool"
 	        mainHeader.innerHTML = "JavaScript is Cool";
 
+	        var listener = function (event) {
+	        	mainHeader.innerHTML = "This is the Main Header";
+	        }
+
+	        btn1.addEventListener('click', listener, false);
+	        };
+
+
 	        // todo: get the sub header element by id
 	        // var subHeader = ;
 	        var subHeader = document.getElementById('sub-header');
 
 	        // todo: set the text color of subHeader to blue
 	        subHeader.attributes['style'].value = 'color:blue';
-	        // subHeader.attributes.style.color = "blue";
+
+	        var listener = function(event){
+	        	subHeader.innerHTML = "This is the Sub Header";
+	        }
+
+	        btn2.addEventListener('click', listener, false);
 
 	        // todo: get all list items
 	        // var listItems = ;
@@ -69,6 +89,14 @@
 
 	        // todo: change the text in the first sub paragraph to "Mission Accomplished!"
 	        subParagraphs[0].innerHTML = "Mission Accomplished";
+
+	        var listener = function(event) {
+	        	subParagraphs[0].innerHTML = "This is a simple Paragraph";
+	        }
+	        btn3.addEventListener('click', listener, false);
+
+
+
 
 	    </script>
 
