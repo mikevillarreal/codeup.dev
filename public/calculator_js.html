@@ -21,6 +21,22 @@
                 position: absolute;
                 left: 470px; 
             }
+            #resultBubble {
+                background-color: white;
+                font-size: 50px;
+                text-align: center;
+                color: black;
+                border: none;
+                width: 180px;
+                position: absolute;
+                left: 720px;
+                top: 130px;
+            }
+            #bubble {
+                position: absolute;
+                left: 650px;
+                top: 80px; 
+            }
             #graphics {
                 position: absolute;
                 left: 400px; 
@@ -78,6 +94,7 @@
     <body>
         <h1 color: white; >My Awesome, Amazing, Very Good,<br>Super-Great <span style="font-weight: bold; color: orange; background: black; padding: 0px 5px 0px 5px;" >KALQULEITOR!!!</span></h1>
         <img id= "confused" src="/images/confused_face.png">
+        <img id= "bubble" src="/images/bubble.png">
         <div id= "image_box">
             <div id= "container">
 
@@ -87,11 +104,15 @@
                     </div>
                     
                     <div>
-                        <input id= "middle_operator">
+                        <input id= "middle_operator" value="">
                     </div>
                     
                     <div>
-                        <input id= "right_operand">
+                        <input id= "right_operand" value="">
+                    </div>
+                    
+                    <div>
+                        <input id= "resultBubble" value="">
                     </div>
                     
                     <button id= "btn1" value= 1>1</button>
@@ -119,6 +140,12 @@
 
 
         <script>
+        var confused = document.getElementById("confused");
+        var leftInput = "";
+        var rightInput = "";
+        var operation = "";
+        var answer = "";
+
         var btn1 = document.getElementById("btn1");
         var btn2 = document.getElementById("btn2");
         var btn3 = document.getElementById("btn3");
@@ -138,10 +165,53 @@
         var btnEquals = document.getElementById("btnEquals");
 
         var buttonClick = function(event){
-            document.getElementById('left_operand').value = this.value;
+            if (document.getElementById('middle_operator').value == ""){
+                leftInput += this.value;
+                document.getElementById('left_operand').value = leftInput;
+            } else {
+                rightInput += this.value;
+                document.getElementById('right_operand').value = rightInput;
+            }
         }
+        var operators = function(event){
+            operation = document.getElementById('middle_operator').value = this.value;
+        }
+        var result = function(){
+            answer = eval(leftInput + operation + rightInput)
+            document.getElementById('resultBubble').value = answer;
+            document.getElementById('left_operand').value = answer;
+            document.getElementById('middle_operator').value = "";
+            document.getElementById('right_operand').value = "";
+            document.getElementById('confused').src="/images/smart_dog.png";
+
+            rightInput = "";
+            leftInput = answer;
+        }
+
+         var clearResult = function(){
+            // document.getElementById('left_operand').value = "";
+            // document.getElementById('right_operand').value = "";
+            // document.getElementById('middle_operator').value = "";
+            // document.getElementById('resultBubble').value = "";
+            window.location.reload();
+        }
+
         btn1.addEventListener('click', buttonClick, false);
         btn2.addEventListener('click', buttonClick, false);
+        btn3.addEventListener('click', buttonClick, false);
+        btn4.addEventListener('click', buttonClick, false);
+        btn5.addEventListener('click', buttonClick, false);
+        btn6.addEventListener('click', buttonClick, false);
+        btn7.addEventListener('click', buttonClick, false);
+        btn8.addEventListener('click', buttonClick, false);
+        btn9.addEventListener('click', buttonClick, false);
+        btn0.addEventListener('click', buttonClick, false);
+        btnPlus.addEventListener('click', operators, false);
+        btnMinus.addEventListener('click', operators, false);
+        btnMultiply.addEventListener('click', operators, false);
+        btnDivide.addEventListener('click', operators, false);
+        btnEquals.addEventListener('click', result, false);
+        btnc.addEventListener('click', clearResult, false);
 
         </script>
 
