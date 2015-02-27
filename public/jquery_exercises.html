@@ -30,10 +30,37 @@
 
 		<script>
 			
-			$('document').ready(function() {
-			    var codeup = $('.ligher').css('color', 'red');
+			$('h1').hover(
+				function() {
+			    var codeup = $('h1').css('background', 'yellow');
+			    console.log(codeup);
+			},
+				function() {
+			    var codeup = $('h1').css('background', '');
 			    console.log(codeup);
 			});
+
+			$('p').dblclick(
+				function(){
+					$(this).css('font-size', '18px');
+				});
+
+			$('li').hover(
+				function(){
+				$(this).css('color', 'red');
+			},
+				function(){
+				$(this).css('color', '');
+			});
+
+
+			// $('p').dblclick(
+			// 	function(){
+			// 		$(this).css('font-size', '')
+			// 	});
+				
+
+
 
 		</script>
 	</body>
