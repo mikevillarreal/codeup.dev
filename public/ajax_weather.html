@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>My AJAX Weather</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+		<link href="http://getbootstrap.com/examples/starter-template/starter-template.css" rel="stylesheet">
+
+    </head>
+    <body>
+        <div id="wrapper">
+        	<div id="today" class="window">
+            	<h1>Current Weather</h1>
+
+            	<div id="weather"></div>
+            </div>
+
+            <div id="manana" class="window">
+            	<h2>Manana Weather</h2>
+
+            	<div id="next_weather"></div>
+            </div>
+
+            <div id="day2" class="window">
+            	<h2>Day 2 Weather</h2>
+
+                <div id="day_two_weather"></div>
+            </div>
+
+            <div id="day3" class="window">
+            	<h2>Day 3 Weather</h2>
+
+            	<div id="day_three_weather"></div>
+            </div>
+        </div>
+
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+
+    	<script>
+        	(function() {
+        	    var weatherDisplay = $('#weather'),
+        	    weatherHtml = '';
+
+        	    var currentWeather = $.ajax('http://api.openweathermap.org/data/2.5/weather?id=4726206');
+
+        	    currentWeather.done(function(data) {
+        	        // high temp in F
+        	        // low temp in F
+        	        // icon.png for the day's weather
+        	        // wind
+        	        var maxTemp = '<p><span style="font-weight: bolder">Max Temp</span> ' + data.main.temp_max + '</p>';
+        	        var minTemp = '<p><span style="font-weight: bolder">Min Temp</span> ' + data.main.temp_min + '</p>';
+        	        var icon = '<img src="http://openweathermap.org/img/w/' + data.weather[0].icon +'.png">';
+        	        var humidity = '<p><span style="font-weight: bolder">Humidity</span> ' + data.main.humidity + '</p>';
+        	        var pressure = '<p><span style="font-weight: bolder">Pressure</span> ' + data.main.pressure + '</p>';
+        	        var wind = '<p><span style="font-weight: bolder">Wind Speed</span> ' + data.wind.speed + '</p>';
+
+        	        var weatherToDisplay = maxTemp + minTemp + icon	+ humidity + pressure + wind;
+
+        	        $(weatherDisplay).html(weatherToDisplay);
+        	        
+        	        
+        	    });
+
+
+        		var nextWeather = $.ajax('http://api.openweathermap.org/data/2.5/forecast/daily?lat=29.423017&lon=-98.48527&cnt=3&mode=json');
+        	    nextWeather.done(function(data) {
+        	    
+        	        var dayTemp = '<p><span style="font-weight: bolder">Day Temp</span> ' + data.list[0].temp.day + '</p>';
+        	        var nightTemp = '<p><span style="font-weight: bolder">Night Temp</span> ' + data.list[0].temp.night + '</p>';
+        	        var icon = '<img src="http://openweathermap.org/img/w/' + data.list[0].weather[0].icon +'.png">';
+        	        var humidity = '<p><span style="font-weight: bolder">Humidity</span> ' + data.list[0].humidity + '</p>';
+        	        var pressure = '<p><span style="font-weight: bolder">Pressure</span> ' + data.list[0].pressure + '</p>';
+        	        var wind = '<p><span style="font-weight: bolder">Wind Speed</span> ' + data.list[0].speed + '</p>';
+
+        	        var weatherToDisplay = dayTemp + nightTemp + icon	+ humidity + pressure + wind;
+
+        	        
+        	       	$('#next_weather').html(weatherToDisplay);
+        	        
+        	    });
+
+        	    	var dayTwoWeather = $.ajax('http://api.openweathermap.org/data/2.5/forecast/daily?lat=29.423017&lon=-98.48527&cnt=3&mode=json');
+        	    	dayTwoWeather.done(function(data) {
+        	    
+        	        var dayTemp = '<p><span style="font-weight: bolder">Day Temp</span> ' + data.list[1].temp.day + '</p>';
+        	        var nightTemp = '<p><span style="font-weight: bolder">Night Temp</span> ' + data.list[1].temp.night + '</p>';
+        	        var icon = '<img src="http://openweathermap.org/img/w/' + data.list[1].weather[0].icon +'.png">';
+        	        var humidity = '<p><span style="font-weight: bolder">Humidity</span> ' + data.list[1].humidity + '</p>';
+        	        var pressure = '<p><span style="font-weight: bolder">Pressure</span> ' + data.list[1].pressure + '</p>';
+        	        var wind = '<p><span style="font-weight: bolder">Wind Speed</span> ' + data.list[1].speed + '</p>';
+
+        	        var weatherToDisplay = dayTemp + nightTemp + icon	+ humidity + pressure + wind;
+
+        	        
+        	       	$('#day_two_weather').html(weatherToDisplay);
+        	        
+        	    });
+
+        	    	var dayThreeWeather = $.ajax('http://api.openweathermap.org/data/2.5/forecast/daily?lat=29.423017&lon=-98.48527&cnt=3&mode=json');
+        	    	dayThreeWeather.done(function(data) {
+        	    
+        	        var dayTemp = '<p><span style="font-weight: bolder">Day Temp</span> ' + data.list[2].temp.day + '</p>';
+        	        var nightTemp = '<p><span style="font-weight: bolder">Night Temp</span> ' + data.list[2].temp.night + '</p>';
+        	        var icon = '<img src="http://openweathermap.org/img/w/' + data.list[2].weather[0].icon +'.png">';
+        	        var humidity = '<p><span style="font-weight: bolder">Humidity</span> ' + data.list[2].humidity + '</p>';
+        	        var pressure = '<p><span style="font-weight: bolder">Pressure</span> ' + data.list[2].pressure + '</p>';
+        	        var wind = '<p><span style="font-weight: bolder">Wind Speed</span> ' + data.list[2].speed + '</p>';
+
+        	        var weatherToDisplay = dayTemp + nightTemp + icon	+ humidity + pressure + wind;
+
+        	        
+        	       	$('#day_three_weather').html(weatherToDisplay);
+        	        
+        	    });
+
+        	})();
+    	</script>
+    	
+
+    </body>
+</html>
