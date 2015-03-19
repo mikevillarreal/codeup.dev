@@ -11,46 +11,166 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 		<link href="http://getbootstrap.com/examples/starter-template/starter-template.css" rel="stylesheet">
 
+        <style>
+        body {
+            background-image: url(/images/weather_bg.jpg);
+            background-size: 100%;
+        }
+
+        
+        h2 {
+            color: #1E90FF;
+        }
+        .window {
+            width: 263px;
+            height: 270px;
+            text-align: center;
+            background-color: rgba(255,255,255,.8);
+            border-radius: 5%;
+            float: left;
+            margin: 15px;
+        }
+
+        .window_top {
+            width: 300px;
+            height: 270px;
+            text-align: center;
+            margin: 10px;
+
+        }
+        #map {
+        width: 545px;
+        height: 284px;
+        border-radius: 2%;
+        position: absolute;
+        top: 70px;
+        right: 290px;
+        }
+        #wrapper {
+            width: 900px;
+            height: 630px;
+            background-color: rgba(255,255,255,.8);
+            border-radius: 2%;
+            padding: 10px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+
+        </style>
     </head>
     <body>
         <div id="wrapper">
-        	<div id="today" class="window">
-            	<h1>Current Weather</h1>
+        	<div id="top_row">
+                <div id="today" class="window_top">
+                	<h1>Current Weather</h1>
 
-            	<div id="weather"></div>
+                	<div id="weather"></div>
+                </div>
+                <div id="map_window">
+                    <div id="map"></div>
+                </div>
+                
+            </div> 
+            <div id="bottom_row">
+
+                <div id="manana" class="window">
+                	<h2>Manana Weather</h2>
+
+                	<div id="next_weather"></div>
+                </div>
+
+                <div id="day2" class="window">
+                	<h2>Day 2 Weather</h2>
+
+                    <div id="day_two_weather"></div>
+                </div>
+
+                <div id="day3" class="window">
+                	<h2>Day 3 Weather</h2>
+
+                	<div id="day_three_weather"></div>
             </div>
-
-            <div id="manana" class="window">
-            	<h2>Manana Weather</h2>
-
-            	<div id="next_weather"></div>
-            </div>
-
-            <div id="day2" class="window">
-            	<h2>Day 2 Weather</h2>
-
-                <div id="day_two_weather"></div>
-            </div>
-
-            <div id="day3" class="window">
-            	<h2>Day 3 Weather</h2>
-
-            	<div id="day_three_weather"></div>
             </div>
         </div>
 
-    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="js/bootstrap.min.js"></script>
 
-    	<script>
-        	(function() {
+        
+            <!-- Load the Google Maps API [DON'T FORGET TO USE A KEY] -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXxND_oUq4pHRqCzXuIffVy8A1VffEomo"></script>
+
+
+        <script>
+        (function() {
+        
+            // Set our address to geocode
+            var address = '1001 Northwest Loop 410, San Antonio, TX 78213';
+
+            // Init geocoder object
+            var geocoder = new google.maps.Geocoder();
+
+
+            // Geocode our address
+            geocoder.geocode( { 'address': address}, function(results, status) {
+              // Check for a successful result
+              if (status == google.maps.GeocoderStatus.OK) {
+            // Set our map options
+            var mapOptions = {
+              // Set the zoom level
+              zoom: 10,
+              // This sets the center of the map at our location
+              center: new google.maps.LatLng(0, 0),
+              // Show this map in satellite view
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+            
+            
+            // Render the map
+            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+            // marker 
+            var guajillos = { lat: 29.521188, lng: -98.506983 };
+
+            var image = '/images/icon_pin_map.png'
+
+            var marker = new google.maps.Marker({
+              position: guajillos,
+              draggable: true,
+              animation: google.maps.Animation.DROP,
+              icon: image,
+              map: map,
+            });
+
+            //Get long lat of Marker
+            google.maps.event.addListener(marker, 'dragend', function (event){
+                console.log(this.getPosition());
+
+            })
+
+            var infowindow = new google.maps.InfoWindow({
+                content: '<div id="info">Climate is what we expect,<br>weather is what we get!</div>'
+            });
+
+            // Open the window using our map and marker
+            infowindow.open(map,marker);
+          } else {
+            // Show an error message with the status if our request fails
+            alert("Geocoding was not successful - STATUS: " + status);
+          } 
+        });
+       
+        
+
+
         	    var weatherDisplay = $('#weather'),
         	    weatherHtml = '';
 
         	    var currentWeather = $.ajax('http://api.openweathermap.org/data/2.5/weather?id=4726206');
+                console.log(currentWeather);
 
         	    currentWeather.done(function(data) {
         	        // high temp in F
@@ -59,7 +179,7 @@
         	        // wind
         	        var maxTemp = '<p><span style="font-weight: bolder">Max Temp</span> ' + data.main.temp_max + '</p>';
         	        var minTemp = '<p><span style="font-weight: bolder">Min Temp</span> ' + data.main.temp_min + '</p>';
-        	        var icon = '<img src="http://openweathermap.org/img/w/' + data.weather[0].icon +'.png">';
+        	        icon = '<img src="http://openweathermap.org/img/w/' + data.weather[0].icon +'.png">';
         	        var humidity = '<p><span style="font-weight: bolder">Humidity</span> ' + data.main.humidity + '</p>';
         	        var pressure = '<p><span style="font-weight: bolder">Pressure</span> ' + data.main.pressure + '</p>';
         	        var wind = '<p><span style="font-weight: bolder">Wind Speed</span> ' + data.wind.speed + '</p>';
@@ -99,7 +219,7 @@
         	        var pressure = '<p><span style="font-weight: bolder">Pressure</span> ' + data.list[1].pressure + '</p>';
         	        var wind = '<p><span style="font-weight: bolder">Wind Speed</span> ' + data.list[1].speed + '</p>';
 
-        	        var weatherToDisplay = dayTemp + nightTemp + icon	+ humidity + pressure + wind;
+        	        var weatherToDisplay = (dayTemp * + nightTemp + icon	+ humidity + pressure + wind;
 
         	        
         	       	$('#day_two_weather').html(weatherToDisplay);
@@ -123,7 +243,7 @@
         	        
         	    });
 
-        	})();
+            })();
     	</script>
     	
 
