@@ -34,10 +34,10 @@ $myFavoriteFood = ['Tortas', 'Tacos', 'Tostadas', 'Tamales', 'Tortillas', 'Tripa
 		</div>
 		<div>
 			<ol>
-				<?php foreach ($myFavoriteFood as $myFood) {?>
+				<?foreach ($myFavoriteFood as $myFood):?>
 				
-				<li><?php echo $myFood;?></li>
-				<?php } ?>
+				<li><?=$myFood;?></li>
+				<?endforeach?>
 			</ol>
 		</div>
 	</div>

@@ -42,9 +42,7 @@ $randomNouns = array_rand($nouns);
 	</div>
 	<div>
 		<h2>
-			<?php 
-				echo $adjectives[$randomAdjetive] . ' ' . $nouns[$randomNouns];
-			?>
+			<?=$adjectives[$randomAdjetive] . ' ' . $nouns[$randomNouns];?>
 		</h2>
 		<button onClick="document.location.reload(true)">Give me a new Name!</button>
 	</div>
