@@ -1,6 +1,22 @@
 <?php
 
+
+function pageController()
+{
+    // Initialize an empty data array.
+    $data = array();
+
 $myFavoriteFood = ['Tortas', 'Tacos', 'Tostadas', 'Tamales', 'Tortillas', 'Tripas', '& a DietCoke'];
+
+$data['myFavoriteFood'] = $myFavoriteFood;
+
+  // Return the completed data array.
+    return $data;    
+}
+
+// Call the pageController function and extract all the returned array as local variables.
+extract(pageController());
+
 
 ?>
 
