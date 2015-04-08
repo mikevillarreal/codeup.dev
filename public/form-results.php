@@ -5,7 +5,7 @@ $number = isset($_POST['number']) ? $_POST['number'] : '';
 <!DOCTYPE html>
 <html>
 <head>
-    <title>POST Example</title>
+    <title>POST Results</title>
 </head>
 <body>
     <h2>Name</h2>
